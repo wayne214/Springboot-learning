@@ -1,5 +1,6 @@
 package com.wayne.restfulapp.controller;
 
+import com.wayne.restfulapp.config.BaseResult;
 import com.wayne.restfulapp.model.Message;
 import com.wayne.restfulapp.repository.MessageRepository;
 import io.swagger.annotations.*;
@@ -82,8 +83,10 @@ public class MessageController {
      * @return
      */
     @PatchMapping(value = "/message/text")
-    public Message patch(Message message) {
-        return this.messageRepository.updateText(message);
+    public BaseResult<Message>  patch(Message message) {
+        Message msgResult = this.messageRepository.updateText(message);
+        return BaseResult.successWithData(msgResult);
+
     }
 
     @GetMapping(value = "message/{id}")
