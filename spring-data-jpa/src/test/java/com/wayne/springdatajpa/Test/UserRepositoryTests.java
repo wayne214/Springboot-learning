@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -33,5 +36,13 @@ public class UserRepositoryTests {
         Assert.assertEquals(9, userRepository.findAll().size());
         Assert.assertEquals("bb", userRepository.findByUserNameOrEmail("bb","cc@126.com").getNickName());
         userRepository.delete(userRepository.findByUserName("aa1"));
+    }
+    @Test
+    public void testPageQuery() {
+        int page=1, size = 2;
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        userRepository.findAll(pageable);
+        userRepository.findByNickName("aa", pageable);
     }
 }
