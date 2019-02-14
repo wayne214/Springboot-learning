@@ -1,10 +1,15 @@
 package com.wayne.springbootjdbc.model;
 
+import com.wayne.springbootjdbc.enums.UserSexEnum;
+
 public class User {
     private Long id;
     private String name;
     private String password;
     private int age;
+
+    private UserSexEnum userSex;
+    private String nickName;
 
     public User(String name, String password, int age) {
         this.name = name;
