@@ -60,3 +60,13 @@ JpaSpecificationExecutor 的源码很简单，根据 Specification 的查询条�
 
 ## 多表查询
 多表查询在 Spring Data JPA 中有两种实现方式，第一种是利用 Hibernate 的级联查询来实现，第二种是创建一个结果集的接口来接收连表查询后的结果，
+
+# Spring Data JPA 多数据源的使用
+配置 Spring Data JPA 对多数据源的使用，一般分为以下几步：
+
+- 创建数据库 test1 和 test2
+- 配置多数据源
+- 不同源的 repository 放入不同包路径
+- 声明不同的包路径下使用不同的数据源、事务支持
+- 不同的包路径下创建对应的 repository
+- 测试使用
