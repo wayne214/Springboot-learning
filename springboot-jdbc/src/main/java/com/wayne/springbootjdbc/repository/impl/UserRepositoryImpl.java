@@ -26,7 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (jdbcTemplate == null) {
             jdbcTemplate = primaryJdbcTemplate;
         }
-        return jdbcTemplate.update("INSERT INTO users(name, password, age) values(?, ?, ?)", user.getName(), user.getPassword(), user.getAge());
+        return jdbcTemplate.update("INSERT INTO users(name, password, age) values(?, ?, ?)", user.getUserName(), user.getPassword(), user.getAge());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
             jdbcTemplate = primaryJdbcTemplate;
         }
         return jdbcTemplate.update("UPDATE users SET name = ? , password = ? , age = ? WHERE id=?",
-                user.getName(), user.getPassword(), user.getAge(), user.getId());
+                user.getUserName(), user.getPassword(), user.getAge(), user.getId());
     }
 
     @Override
@@ -74,7 +74,7 @@ public class UserRepositoryImpl implements UserRepository {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();
             user.setId(rs.getLong("id"));
-            user.setName(rs.getString("name"));
+            user.setUserName(rs.getString("name"));
             user.setPassword(rs.getString("password"));
             user.setAge(rs.getInt("age"));
 

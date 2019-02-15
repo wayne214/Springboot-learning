@@ -1,5 +1,7 @@
 package com.wayne.springbootjdbc.test;
 
+import com.wayne.springbootjdbc.enums.UserSexEnum;
+import com.wayne.springbootjdbc.mapper.UserMapper;
 import com.wayne.springbootjdbc.model.User;
 import com.wayne.springbootjdbc.repository.UserRepository;
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @SpringBootTest
@@ -21,6 +24,9 @@ public class UserRepositoryTest {
     private JdbcTemplate primaryJdbcTemplate;
     @Autowired
     private JdbcTemplate secondaryJdbcTemplate;
+    @Resource
+    private UserMapper userMapper;
+
     @Test
     public void testSave() {
         User user = new User("wayne", "1234", 20);
@@ -57,5 +63,20 @@ public class UserRepositoryTest {
         for(User user : userList) {
             System.out.println("users=="+user.toString());
         }
+    }
+    @Test
+    public void testUser() {
+        // 增加
+        userMapper.insert(new User("aa", "a1111", UserSexEnum.MAN));
+
+        //删除
+        userMapper.delete(2l);
+
+        User user = userMapper.getOne(1l);
+        user.setNickName("smile");
+        //修改
+        userMapper.update(user);
+        //查询
+        List<User> users = userMapper.getAll();
     }
 }
