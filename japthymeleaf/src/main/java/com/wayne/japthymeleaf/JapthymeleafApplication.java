@@ -1,13 +1,13 @@
-package com.wayne.springusermanager;
+package com.wayne.japthymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringUsermanagerApplication {
+public class JapthymeleafApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringUsermanagerApplication.class, args);
+        SpringApplication.run(JapthymeleafApplication.class, args);
     }
 
 }

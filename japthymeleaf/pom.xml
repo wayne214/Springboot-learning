@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wayne</groupId>
-    <artifactId>spring-usermanager</artifactId>
+    <artifactId>japthymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-usermanager</name>
+    <name>japthymeleaf</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
