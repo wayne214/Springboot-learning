@@ -1,6 +1,8 @@
 package com.wayne.activemq;
 
 import com.wayne.activemq.producer.Producer;
+import com.wayne.activemq.producer.TopicProducer;
+import org.apache.activemq.broker.region.Topic;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,9 @@ public class ActivemqApplicationTests {
 
     @Autowired
     private Producer producer;
+
+    @Autowired
+    private TopicProducer topicProducer;
     @Rule
     public OutputCapture outputCapture = new OutputCapture();
 
@@ -38,6 +43,12 @@ public class ActivemqApplicationTests {
         for (int i=0;i<100;i++){
             this.producer.sendQueue("Test queue message"+i);
         }
+        Thread.sleep(1000L);
+    }
+
+    @Test
+    public void sendSimpleTopicMessage() throws InterruptedException {
+        topicProducer.sendTopic("Test Topic message");
         Thread.sleep(1000L);
     }
 }
