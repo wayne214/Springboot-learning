@@ -133,4 +133,6 @@ public class TestApplicationTests {
         System.out.println("|==After==|");
     }
 
+    // 使用断言Assert
+
 }
