@@ -63,7 +63,24 @@ public class TestApplicationTests {
                 .andExpect(content().string(containsString("hello")));
     }
 
+
+
     //JUnit使用
+
+
+    /**
+     * @Test，把一个方法标记为测试方法
+     * @Before，每一个测试方法执行前自动调用一次
+     * @After，每一个测试方法执行完自动调用一次
+     * @BeforeClass，所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，因此用 static 修饰
+     * @AfterClass，所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，因此用 static 修饰
+     * @Ignore，暂不执行该测试方法
+     * @RunWith 当一个类用 @RunWith 注释或继承一个用 @RunWith 注释的类时，
+     * JUnit 将调用它所引用的类来运行该类中的测试而不是开发者再去 JUnit 内部去构建它。
+     * 我们在开发过程中使用这个特性看看。
+     */
+
+
     Calculation calculation = new Calculation();
     int result;     //测试结果
     //在 JUnit 4 中使用 @Test 标注为测试方法
