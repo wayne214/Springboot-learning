@@ -1,5 +1,6 @@
 package com.wayne.param;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -32,8 +33,10 @@ public class IndexController {
     public String index2(@RequestParam("name") String name) {
         return "hello2 " + name;
     }
+
     @GetMapping("/hello3/{id}")
     public String index2(@PathVariable("id") String id, @RequestParam("name")String name) {
+        id = StringUtils.trimAllWhitespace(id);
         return "hello3 " + id + "-" + name;
     }
 
